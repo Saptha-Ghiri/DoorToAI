@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Apply basic styling to the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  /* Style table headers */
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Add responsiveness for smaller screens */
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+
+    /* Hide table headers on small screens */
+    th {
+      display: none;
+    }
+
+    /* Display table data as blocks on small screens */
+    td {
+      display: block;
+      border: none;
+    }
+
+    /* Add some spacing between table data blocks */
+    td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- The responsive table structure -->
+<table>
+  <tr>
+    <th>Header 1</th>
+    <th>Header 2</th>
+    <th>Header 3</th>
+  </tr>
+  <tr>
+    <td data-label="Header 1">Data 1A</td>
+    <td data-label="Header 2">Data 2A</td>
+    <td data-label="Header 3">Data 3A</td>
+  </tr>
+  <tr>
+    <td data-label="Header 1">Data 1B</td>
+    <td data-label="Header 2">Data 2B</td>
+    <td data-label="Header 3">Data 3B</td>
+  </tr>
+</table>
+
+</body>
+</html>

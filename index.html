@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoorToAi</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4918364460672710"
+     crossorigin="anonymous"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+      :root {
+  --back: white;
+  --col:black; 
+  --hover:rgb(204, 200, 200);
+}
+
+.load{
+  position: fixed;
+  width: 100%;
+  display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0px;
+  
+  background-color: rgb(255, 255, 255);
+  z-index:1 ;
+  overflow:hidden !important;
+
+}
+
+.ball {
+            -webkit-animation-name: bounce;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-timing-function: cubic-bezier(
+            .5, 0.05, 1, .5);
+            -webkit-animation-iteration-count: infinite;
+        }
+          
+        @-webkit-keyframes bounce {
+            from {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                -webkit-transform: translate3d(0, 100px, 0);
+                transform: translate3d(0, 100px, 0);
+            }
+        }
+
+      html {
+  scroll-behavior: smooth;
+}
+        .con{
+            display: flex;
+        }
+        .left{
+         width: 15%;
+         height: 100%;   
+        }
+        .main{
+         width: 70%;
+         height: 100%;   
+        }
+        .right{
+         width: 15%;
+         height: 100%;   
+        }
+        .intro{
+
+         margin-top: 65px;
+         text-align: center;
+        }
+        /*
+        .dark{
+        background-color: black !important;
+        color: #e6e6e6 !important;
+        a1{
+          color: #e6e6e6;
+        }
+        }*/
+        body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--back);
+  color: var(--col);
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  width: 50%;
+padding: 0px;
+cursor: pointer;
+border-radius: 100px;
+
+}
+
+h4{
+  margin: 0;
+  padding-left: 5px;
+}
+
+
+
+.a1{
+width: 100%;
+display:flex;
+align-items: center;
+justify-content: center;
+color: var(--col);
+padding: 15px 0px;
+text-decoration:none;
+}
+
+img{
+  border-radius: 5px;
+}
+
+td:hover{
+  background-color: var(--hover);
+  transition-duration: 1000ms;
+}
+.container {
+  display: block;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -9px) rotate(45deg);
+}
+.topnav {
+position:fixed;
+top:0px;
+    left:0px;
+  width: 100%;
+  overflow: hidden;
+  background-color:black;
+}
+
+ .home, .chatbot, .video, .design, .productivity, .writing, .marketing{
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: rgb(17, 17, 17);
+  color: white;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 740px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .topnav.responsive {position: relative;
+    height: 1000px;
+  background-color:black;
+}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .container.change.nav{
+    height: 1000px;
+  background-color: #333;
+  }
+
+  .nav{
+  position:fixed;
+  width: 100%;
+top:0px;
+    left:0px;
+  }
+  .main{
+    width: 85%;
+  }
+  .right, .left{
+    width: 0%;
+    display: none;
+  }
+  .con{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+
+
+}
+    </style>
+
+</head>
+<body>
+  <div id="load"  class="load">
+    <div class="ball"><img src="logo-tbg.png" alt="" style="height: 200px;width: 200px;"></div>
+  </div>
+
+    <div class="nav">
+        <div class="topnav" id="myTopnav">
+          <a href="#home" class="home" onclick="anc()">DoorToAi</a>
+          <a href="#chatbot" class="chatbot" onclick="anc()">ChatBot</a>
+          <a href="#design" class="design" onclick="anc()">Design</a>
+          <a href="#writing" class="writing" onclick="anc()">Writing</a>
+          <a href="#video" class="video"  onclick="anc()">Video</a>
+          <a href="#productivity" class="productivity">Productivity</a>
+          <a href="#marketing" class="marketing">Marketing</a>
+          <a href="javascript:void(0);" class="icon" onclick="my()">
+            <div class="container" id="cont" onclick="myFunction(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+          </a>
+        </div>
+        </div>
+        
+    <div class="con">
+        <div class="left">
+          
+        </div>
+
+        <div class="main" id="home">
+          <div class="intro">
+            <h1 style="margin: 0px;">DoorToAi</h1>
+            <span style="float: right;cursor: pointer;" onclick="dark()" id="cha" class="material-icons" style=" color: rgb(0, 0, 0);" >light_mode</span>
+            <p style="font-size:larger; margin-top: 10px;">A Door Way to AI Tools</p>
+          </div>
+          <hr>
+          <div id="chatbot">
+            <br>
+          <h2>ChatBot AI Tools</h2>         
+
+          <table>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://chat.openai.com/" target="_blank"><img class="img" src="/chatbot/ChatGPT.png" alt="" style="width: 25px;height: 25px;"><h4>ChatGPT</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://bard.google.com/" target="_blank"><img class="img" src="/chatbot/googlebard.png" alt="" style="width: 25px;height: 25px;"><h4>Google Bard</h4></a></div></td>
+            </tr>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://writesonic.com/chat" target="_blank"><img class="img" src="/chatbot/chatsonic.png" alt="" style="width: 25px;height: 25px;"><h4>Chat Sonic</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.jasper.ai/" target="_blank"><img class="img" src="/chatbot/jasper.png" alt="" style="width: 25px;height: 25px;"><h4>jasper</h4></a></div></td>
+            </tr>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://poe.com/login" target="_blank"><img class="img" src="/chatbot/Poe.png" alt="" style="width: 25px;height: 25px;"><h4>Poe</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://beta.character.ai/" target="_blank"><img class="img" src="/chatbot/c.ai" alt="" style="width: 25px;height: 25px;"><h4>C.ai</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://web.youchat.com/en/login" target="_blank"><img class="img" src="/chatbot/youchat.png" alt="" style="width: 25px;height: 25px;"><h4>Chatbot</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://you.com/search?q=who+are+you&tbm=youchat&cfr=chat" target="_blank"><img class="img" src="/chatbot/you.png" alt="" style="width: 25px;height: 25px;"><h4>You</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://huggingface.co/chat/" target="_blank"><img class="img" src="/chatbot/huggingchat.png" alt="" style="width: 25px;height: 25px;"><h4>HuggingChat</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx" target="_blank"><img class="img" src="/chatbot/bing.png" alt="" style="width: 25px;height: 25px;"><h4>Bing</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://chatspot.ai/" target="_blank"><img class="img" src="/chatbot/chatspot.png" alt="" style="width: 25px;height: 25px;"><h4>ChatSpot</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://claude.ai/login" target="_blank"><img class="img" src="/chatbot/claude.png" alt="" style="width: 25px;height: 25px;"><h4>Claude</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.kommunicate.io/" target="_blank"><img class="img" src="/chatbot/kommunicate.png" alt="" style="width: 25px;height: 25px;"><h4>Kommunicate</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://deepai.org/chat" target="_blank"><img class="img" src="/chatbot/deepai.png" alt="" style="width: 25px;height: 25px;"><h4>DeepAi</h4></a></div></td>
+            </tr>
+
+            <!--
+            https://poe.com/login
+            https://beta.character.ai/
+            https://web.youchat.com/en/login
+            https://you.com/search?q=who+are+you&tbm=youchat&cfr=chat
+            https://huggingface.co/chat/
+            https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx
+            https://chatspot.ai/
+            https://claude.ai/login
+            https://www.kommunicate.io/
+            https://deepai.org/chat
+            -->
+          </table>
+        </div>
+          <br>
+          
+        <div id="design">
+          <h2>Design AI Tools</h2>
+          <table>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.bluewillow.ai/" target="_blank"><img class="img" src="/design/blue_willow.png" alt="" style="width: 25px;height: 25px;"><h4>Blue Willow</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://openai.com/dall-e-2" target="_blank"><img class="img" src="/design/Dall-e.png" alt="" style="width: 25px;height: 25px;"><h4>DALL-E</h4></a></div></td>
+            </tr>
+            
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.bing.com/images/feed" target="_blank"><img class="img" src="/design/bing.png" alt="" style="width: 25px;height: 25px;"><h4>Bing Image</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://leonardo.ai/" target="_blank"><img class="img" src="/design/leonardo.jpeg" alt="" style="width: 25px;height: 25px;"><h4>Leonardo</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F" target="_blank"><img class="img" src="/design/midjourney.jpeg" alt="" style="width: 25px;height: 25px;"><h4>Midjourney</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.adobe.com/express/" target="_blank"><img class="img" src="/design/stockimg.png" alt="" style="width: 25px;height: 25px;"><h4>StockImg</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.adobe.com/express/" target="_blank"><img class="img" src="/design/adobe_express.png" alt="" style="width: 25px;height: 25px;"><h4>Adobe Express</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://figmaai.io/" target="_blank"><img class="img" src="/design/figmaai.png" alt="" style="width: 25px;height: 25px;"><h4>Figma Ai</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://blend-ai.com/" target="_blank"><img class="img" src="/design/Blend_ai.png" alt="" style="width: 25px;height: 25px;"><h4>Blend Ai</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.logoai.com/logo-maker" target="_blank"><img class="img" src="/design/logoai.png" alt="" style="width: 25px;height: 25px;"><h4>Logo Ai</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.remove.bg/" target="_blank"><img class="img" src="/design/removebg.png" alt="" style="width: 25px;height: 25px;"><h4>Remove BG</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://fontjoy.com/" target="_blank"><img class="img" src="/design/fontjoy.png" alt="" style="width: 25px;height: 25px;"><h4>FontJoy</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.visualeyes.design/" target="_blank"><img class="img" src="/design/visualeyes.png" alt="" style="width: 25px;height: 25px;"><h4>VisualEyes</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="http://colormind.io/" target="_blank"><img class="img" src="/design/colormind.png" alt="" style="width: 25px;height: 25px;"><h4>ColorMind</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://hotpot.ai/" target="_blank"><img class="img" src="/design/hotspotai.png" alt="" style="width: 25px;height: 25px;"><h4>Hotspot Ai</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://designer.microsoft.com/" target="_blank"><img class="img" src="/design/microsoft_designer.png" alt="" style="width: 25px;height: 25px;"><h4>Microsoft Desinger</h4></a></div></td>
+            </tr>
+          </table>
+        </div>
+        <br>
+        <div id="writing" >
+          <h2>Writing AI Tools</h2>
+          <table>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://app.grammarly.com/" target="_blank"><img class="img" src="/writing/grammarly.png" alt="" style="width: 25px;height: 25px;"><h4>Grammarly</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://tome.app/" target="_blank"><img class="img" src="/writing/Tomeapp.png" alt="" style="width: 25px;height: 25px;"><h4>Toome App</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://rytr.me/" target="_blank"><img class="img" src="/writing/Rytr.png" alt="" style="width: 25px;height: 25px;"><h4>Rytr</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.copy.ai/?via=start" target="_blank"><img class="img" src="/writing/grammarly.png" alt="" style="width: 25px;height: 25px;"><h4>Grammarly</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.copy.ai/?via=start" target="_blank"><img class="img" src="/writing/Copyai.png" alt="" style="width: 25px;height: 25px;"><h4>Copy AI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://anyword.com/" target="_blank"><img class="img" src="/writing/anyword.png" alt="" style="width: 25px;height: 25px;"><h4>Any Word</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.wordtune.com/" target="_blank"><img class="img" src="/writing/wordtune.png" alt="" style="width: 25px;height: 25px;"><h4>Word Tune</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://simplified.com/" target="_blank"><img class="img" src="/writing/simplified.png" alt="" style="width: 25px;height: 25px;"><h4>Simplified</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.textmetrics.com/" target="_blank"><img class="img" src="/writing/textmetrics.png" alt="" style="width: 25px;height: 25px;"><h4>Text Metrics</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://prowritingaid.com/" target="_blank"><img class="img" src="/writing/prowritingaid.png" alt="" style="width: 25px;height: 25px;"><h4>Prowritingaid</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://chat.openai.com/" target="_blank"><img class="img" src="/writing/chatGPT.png" alt="" style="width: 25px;height: 25px;"><h4>ChatGPT</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.writecream.com/" target="_blank"><img class="img" src="/writing/writecream.png" alt="" style="width: 25px;height: 25px;"><h4>Writecream</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://quillbot.com/" target="_blank"><img class="img" src="/writing/Quillbot.png" alt="" style="width: 25px;height: 25px;"><h4>Quillbot</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.deepl.com/en/translator" target="_blank"><img class="img" src="/writing/DeepL.png" alt="" style="width: 25px;height: 25px;"><h4>DeepL</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://writesonic.com/" target="_blank"><img class="img" src="/writing/writesonic.png" alt="" style="width: 25px;height: 25px;"><h4>Writesonic</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://unbounce.com/product/smart-copy/" target="_blank"><img class="img" src="/writing/smartcopy.png" alt="" style="width: 25px;height: 25px;"><h4>Smart Copy</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://wordai.com/" target="_blank"><img class="img" src="/writing/wordai.png" alt="" style="width: 25px;height: 25px;"><h4>Word AI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://contentforge.ai/" target="_blank"><img class="img" src="/writing/contentforge.png" alt="" style="width: 25px;height: 25px;"><h4>Content Forge</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.hypotenuse.ai/" target="_blank"><img class="img" src="/writing/Hypotenuse.png" alt="" style="width: 25px;height: 25px;"><h4>Hypotenuse</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.scalenut.com/" target="_blank"><img class="img" src="/writing/scalenut.png" alt="" style="width: 25px;height: 25px;"><h4>Scalenut</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://surferseo.com/" target="_blank"><img class="img" src="/writing/surferseo.png" alt="" style="width: 25px;height: 25px;"><h4>Surfer SEO</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://seo.ai/" target="_blank"><img class="img" src="/writing/seo.png" alt="" style="width: 25px;height: 25px;"><h4>SEO AI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://inkforall.com/" target="_blank"><img class="img" src="/writing/ink.png" alt="" style="width: 25px;height: 25px;"><h4>INK</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.jasper.ai/" target="_blank"><img class="img" src="/writing/jasper.png" alt="" style="width: 25px;height: 25px;"><h4>jasper</h4></a></div></td>
+            </tr>
+
+          </table>
+
+        </div>
+        <br>
+        <div id="video">
+          <h2>Video AI Tools</h2>
+          <table>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://runwayml.com/" target="_blank"><img class="img" src="/video/rumwayml.png" alt="" style="width: 25px;height: 25px;"><h4>RunWayML</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.synthesia.io/" target="_blank"><img class="img" src="/video/Synthesia.png" alt="" style="width: 25px;height: 25px;"><h4>Synthesia</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://invideo.io/" target="_blank"><img class="img" src="/video/invideo.png" alt="" style="width: 25px;height: 25px;"><h4>INVIDEO</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://pictory.ai/" target="_blank"><img class="img" src="/video/pictory.png" alt="" style="width: 25px;height: 25px;"><h4>Pictory</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.deepbrain.io/" target="_blank"><img class="img" src="/video/DeepBrainai.png" alt="" style="width: 25px;height: 25px;"><h4>DeepBrainAI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.heygen.com/" target="_blank"><img class="img" src="/video/heygen.png" alt="" style="width: 25px;height: 25px;"><h4>HeyGen</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.veed.io/" target="_blank"><img class="img" src="/video/veedai.png" alt="" style="width: 25px;height: 25px;"><h4>Veed</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.captions.ai/" target="_blank"><img class="img" src="/video/Captions.png" alt="" style="width: 25px;height: 25px;"><h4>CaptionsAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.capcut.com/" target="_blank"><img class="img" src="/video/capcut.png" alt="" style="width: 25px;height: 25px;"><h4>CapCut</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.unscreen.com/" target="_blank"><img class="img" src="/video/Unscreen.png" alt="" style="width: 25px;height: 25px;"><h4>Unscreen</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.magisto.com/channel/music" target="_blank"><img class="img" src="/video/magisto.png" alt="" style="width: 25px;height: 25px;"><h4>Magisto</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://animoto.com/" target="_blank"><img class="img" src="/video/animoto.png" alt="" style="width: 25px;height: 25px;"><h4>Animoto</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.descript.com/" target="_blank"><img class="img" src="/video/descript.png" alt="" style="width: 25px;height: 25px;"><h4>Descript</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://krisp.ai/" target="_blank"><img class="img" src="/video/krisp.png" alt="" style="width: 25px;height: 25px;"><h4>Krisp</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://filmora.wondershare.com/video-trimmer/" target="_blank"><img class="img" src="/video/flimora.png" alt="" style="width: 25px;height: 25px;"><h4>Filmora</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.flexclip.com/" target="_blank"><img class="img" src="/video/flexclip.png" alt="" style="width: 25px;height: 25px;"><h4>FlexClip</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+            
+          </table>
+        </div>
+        <br>
+        <div id="marketing">
+          <h2>Marketing AI Tools</h2>
+          <table>
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.ellie.ai/" target="_blank"><img class="img" src="/marketing/ellieAI.png" alt="" style="width: 25px;height: 25px;"><h4>EllieAI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.robinai.com/" target="_blank"><img class="img" src="/marketing/robinAI.png" alt="" style="width: 25px;height: 25px;"><h4>RobinAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.quicklines.ai/" target="_blank"><img class="img" src="/marketing/quicklinesAI.png" alt="" style="width: 25px;height: 25px;"><h4>quicklinesAI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.icontact.com/" target="_blank"><img class="img" src="/marketing/icontact.png" alt="" style="width: 25px;height: 25px;"><h4>iContact</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.smartwriter.ai/" target="_blank"><img class="img" src="/marketing/smartwriter.png" alt="" style="width: 25px;height: 25px;"><h4>SmartWriter</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://convertkit.com/" target="_blank"><img class="img" src="/marketing/ConverKit.png" alt="" style="width: 25px;height: 25px;"><h4>ConverKit</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://marketplan.io/" target="_blank"><img class="img" src="/marketing/marketingplan.png" alt="" style="width: 25px;height: 25px;"><h4>MarketingPlan</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://cresta.com/" target="_blank"><img class="img" src="/marketing/crestaAI.png" alt="" style="width: 25px;height: 25px;"><h4>CrestaAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.quickchat.ai/" target="_blank"><img class="img" src="/marketing/quickchatai.png" alt="" style="width: 25px;height: 25px;"><h4>QuickChatAI</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+            <tr>
+              <td><div class="td"><a class="a1" href="https://www.rawshorts.com/" target="_blank"><img class="img" src="/video/rawshorts.png" alt="" style="width: 25px;height: 25px;"><h4>RawShorts</h4></a></div></td>
+              <td><div class="td"><a class="a1" href="https://www.steve.ai/" target="_blank"><img class="img" src="/video/steve.png" alt="" style="width: 25px;height: 25px;"><h4>SteveAI</h4></a></div></td>
+            </tr>
+
+
+          </table>
+        </div>
+          <br>
+          <br>
+             </div>
+
+        <div class="right">
+        </div>
+    </div>
+  
+    
+
+</body>
+<script>
+  let t=0;
+  function anc(x){
+      my();
+      $("#cont").removeClass("change");
+    }
+    function my() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+      console.log(x);
+
+    }
+    function myFunction(x) {
+      x.classList.toggle("change");
+    }
+    var r = document.querySelector(':root');
+
+    function dark() {
+      let span=document.getElementsByClassName("material-icons");
+      if(t%2==0){
+  r.style.setProperty('--back', 'black');
+  r.style.setProperty('--col', 'white');
+  r.style.setProperty('--hover', 'rgb(80, 80, 80)');
+  span.textContent = "light_mode";
+      }
+      else{
+  r.style.setProperty('--back', 'white');
+  r.style.setProperty('--col', 'black');
+  r.style.setProperty('--hover', 'rgb(204, 200, 200)');
+
+  
+  span.textContent =  "dark_mode";
+
+      }
+      t+=1;
+      
+
+}
+/*window.onload=function(){
+setTimeout(function(){
+$("div").removeClass("load");
+let lo=document.getElementsByClassName("load");
+lo.style.setProperty('--load','none');
+}, 20000);
+    }
+*/
+setTimeout(function(){ 
+       $("#load").hide();
+}, 1000);
+  
+
+   /* $( ".darkmode" ).on("click", function() {
+            if( $( ".con" ).hasClass( "dark" )) {
+                $( ".con" ).removeClass( "dark" );
+                $( ".darkmode" ).text( "OFF" );
+            } else {
+                $( ".con" ).addClass( "dark" );
+                $( ".darkmode" ).text( "ON" );
+            }
+        });*/
+    </script>
+</html>
